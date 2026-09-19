@@ -88,34 +88,25 @@
   /* Sections */
   .section { padding: 96px 0; }
 
-  /* Hero: full-width photo behind the headline */
-  .hero {
-    position: relative;
-    display: flex;
+  /* Hero: words beside the photo so the face stays visible */
+  .hero { padding: 72px 0; }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
     align-items: center;
     min-height: calc(100vh - 68px);
-    overflow: hidden;
-    background: var(--charcoal);
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 32%;
-    z-index: 0;
-  }
-  .hero .wrap { position: relative; z-index: 1; }
-  .hero-panel {
-    background: var(--cream);
-    border-radius: 20px;
-    padding: 42px 38px;
-    max-width: 640px;
-    box-shadow: 0 18px 50px rgba(20, 24, 26, 0.28);
   }
   .hero h1 { margin-bottom: 20px; }
-  .hero-sub { font-size: 1.12rem; max-width: 46ch; margin-bottom: 30px; }
+  .hero-sub { font-size: 1.12rem; max-width: 44ch; margin-bottom: 30px; }
+  .hero-media img {
+    display: block;
+    width: 100%;
+    height: min(74vh, 660px);
+    object-fit: cover;
+    object-position: center 42%;
+    border-radius: 18px;
+  }
 
   /* Buttons */
   .btn {
@@ -232,9 +223,9 @@
 
   @media (max-width: 860px) {
     .section, .contact { padding: 56px 0; }
-    .hero { display: block; min-height: auto; padding: 34px 0 0; }
-    .hero-bg { position: static; width: 100%; height: 48vh; }
-    .hero-panel { padding: 30px 24px; box-shadow: none; }
+    .hero { padding: 36px 0 0; }
+    .hero .wrap { grid-template-columns: 1fr; min-height: auto; gap: 30px; }
+    .hero-media img { height: 52vh; }
     .cards { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; gap: 32px; }
     .about-photo { order: 2; }
@@ -257,14 +248,16 @@
   <!-- Top of the page -->
   <section class="hero">
     <div class="wrap">
-      <div class="hero-panel">
+      <div class="hero-copy">
         <p class="eyebrow">AI Wealth Creators</p>
         <h1>Your catalogue, your orders, and the buyers who went quiet — on <span class="accent">one page</span>.</h1>
         <p class="hero-sub">I build one page catalogues, order pages and follow-up boards for women running small home businesses across India.</p>
         <a class="btn" href="BOOKING_LINK_GOES_HERE">Book a 20 minute call</a>
       </div>
+      <div class="hero-media">
+        <img src="images/Speaking.jpeg" width="2048" height="2048" alt="Lakshmi Ummella, founder of AI Wealth Creators, speaking with a small home business owner">
+      </div>
     </div>
-    <img class="hero-bg" src="images/Speaking.jpeg" width="2048" height="2048" alt="Founder of AI Wealth Creators speaking with a small home business owner">
   </section>
 
   <!-- The problem, in her words -->
