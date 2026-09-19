@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Wealth Creators — one page catalogues, order pages and follow-up boards</title>
+<meta name="description" content="AI Wealth Creators builds one page catalogues, order pages and follow-up boards for women running small home businesses across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Palette (hex named): Soft Cream #FAF6EF, Warm Sand #D9C7A3, Charcoal Ink #232A2E,
+     Deep Teal #0F6B6B, Near Black #14181A, White #FFFFFF */
+  :root {
+    --cream: #FAF6EF;
+    --sand: #D9C7A3;
+    --charcoal: #232A2E;
+    --teal: #0F6B6B;
+    --ink: #14181A;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, blockquote {
+    font-family: Fraunces, Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { font-size: clamp(2.3rem, 5.2vw, 3.7rem); font-weight: 700; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 600; }
+  h3 { font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+
+  p { margin: 0; }
+
+  a { color: var(--teal); }
+
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .measure { max-width: 68ch; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--sand);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+
+  .accent { color: var(--teal); }
+  .slot { color: var(--teal); white-space: nowrap; }
+
+  /* Header */
+  .site-header {
+    background: var(--charcoal);
+    padding: 14px 0;
+  }
+  .site-header .wrap { display: flex; align-items: center; gap: 12px; }
+  .site-header img { display: block; height: 40px; width: auto; }
+  .wordmark {
+    font-family: Fraunces, Georgia, serif;
+    color: var(--white);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  /* Sections */
+  .section { padding: 96px 0; }
+
+  /* Hero: full-width photo behind the headline */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 68px);
+    overflow: hidden;
+    background: var(--charcoal);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 32%;
+    z-index: 0;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-panel {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 42px 38px;
+    max-width: 640px;
+    box-shadow: 0 18px 50px rgba(20, 24, 26, 0.28);
+  }
+  .hero h1 { margin-bottom: 20px; }
+  .hero-sub { font-size: 1.12rem; max-width: 46ch; margin-bottom: 30px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: 0.94; }
+
+  /* Problem */
+  .quote {
+    margin: 26px 0 22px;
+    padding: 6px 0 6px 26px;
+    border-left: 3px solid var(--sand);
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    font-style: italic;
+    color: var(--ink);
+    max-width: 34ch;
+  }
+  .problem-note { max-width: 62ch; }
+
+  /* Services */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin: 44px 0 36px;
+  }
+  .card {
+    background: var(--sand);
+    border-radius: 16px;
+    padding: 30px 26px 32px;
+  }
+  .card svg { color: var(--teal); display: block; margin-bottom: 18px; }
+  .card h3 { margin-bottom: 12px; }
+  .card p { font-size: 1rem; line-height: 1.6; }
+  .price { font-size: 1.15rem; max-width: 60ch; }
+  .price strong { font-family: Fraunces, Georgia, serif; font-size: 1.3rem; }
+
+  /* Service band */
+  .band {
+    background: var(--sand);
+    padding: 0;
+    text-align: center;
+  }
+  .band img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    height: min(78vh, 620px);
+    object-fit: contain;
+  }
+
+  /* Steps */
+  .steps { list-style: none; margin: 44px 0 0; padding: 0; display: grid; gap: 30px; }
+  .step { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: start; }
+  .step-num {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 1.5rem;
+    color: var(--teal);
+    border-top: 2px solid var(--sand);
+    padding-top: 10px;
+  }
+  .step h3 { margin-bottom: 8px; }
+  .step p { max-width: 64ch; }
+  .one-week { margin-top: 42px; font-family: Fraunces, Georgia, serif; font-size: 1.4rem; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: 1.7fr 1fr; gap: 48px; align-items: start; }
+  .about-name { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--sand);
+    display: block;
+  }
+  .about-text p { margin-bottom: 16px; max-width: 66ch; }
+  .about-photo { margin: 0; }
+  .about-photo img { width: 100%; height: auto; border-radius: 16px; display: block; }
+
+  /* Contact */
+  .contact { background: var(--charcoal); color: var(--white); padding: 96px 0; }
+  .contact h2 { color: var(--white); }
+  .contact p { color: var(--white); max-width: 56ch; margin-bottom: 30px; }
+  .contact-alt { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 26px; }
+  .contact-alt a {
+    color: var(--white);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer { background: var(--charcoal); padding: 26px 0 34px; border-top: 1px solid var(--sand); }
+  .footer .wrap { display: flex; align-items: center; gap: 12px; }
+  .footer img { display: block; height: 30px; width: auto; }
+  .footer p { color: var(--white); font-family: Fraunces, Georgia, serif; font-size: 0.98rem; }
+
+  @media (max-width: 860px) {
+    .section, .contact { padding: 56px 0; }
+    .hero { display: block; min-height: auto; padding: 34px 0 0; }
+    .hero-bg { position: static; width: 100%; height: 48vh; }
+    .hero-panel { padding: 30px 24px; box-shadow: none; }
+    .cards { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; gap: 32px; }
+    .about-photo { order: 2; }
+    .band img { height: auto; width: 100%; }
+    .step { grid-template-columns: 44px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <img src="images/Logo.png" width="1254" height="1254" alt="AI Wealth Creators">
+    <span class="wordmark">AI Wealth Creators</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- Top of the page -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-panel">
+        <p class="eyebrow">AI Wealth Creators</p>
+        <h1>Your catalogue, your orders, and the buyers who went quiet — on <span class="accent">one page</span>.</h1>
+        <p class="hero-sub">I build one page catalogues, order pages and follow-up boards for women running small home businesses across India.</p>
+        <a class="btn" href="BOOKING_LINK_GOES_HERE">Book a 20 minute call</a>
+      </div>
+    </div>
+    <img class="hero-bg" src="images/Speaking.jpeg" width="2048" height="2048" alt="Founder of AI Wealth Creators speaking with a small home business owner">
+  </section>
+
+  <!-- The problem, in her words -->
+  <section class="section" id="problem">
+    <div class="wrap">
+      <p class="eyebrow">In her words</p>
+      <h2>She is already selling. The page is missing.</h2>
+      <blockquote class="quote">
+        I take orders on chat and over the phone. I keep prices in my head. I lose repeat buyers because there is no page to share and no written record of what was ordered. I already pay a designer or a local freelancer each time, and I still cannot change anything myself.
+      </blockquote>
+      <p class="problem-note">One seller put it plainly: <span class="slot">[CLIENT QUOTE]</span></p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <p class="eyebrow">What I do about it</p>
+      <h2>Three projects. One fee.</h2>
+      <div class="cards">
+        <article class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <path d="M3 9h18M9 9v11"></path>
+          </svg>
+          <h3>One page catalogue and order page</h3>
+          <p>A fixed scope one page catalogue with clear prices and an order form.</p>
+        </article>
+        <article class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v10"></path>
+            <path d="M8 9l4 4 4-4"></path>
+            <path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path>
+          </svg>
+          <h3>Order capture from form to sheet</h3>
+          <p>Every order lands in a sheet the moment it is placed.</p>
+        </article>
+        <article class="card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 20V6"></path>
+            <path d="M4 20h16"></path>
+            <path d="M8 20v-6M12 20v-9M16 20v-4"></path>
+          </svg>
+          <h3>Weekly seller digest</h3>
+          <p>A flow that records every order and flags the ones that have gone quiet.</p>
+        </article>
+      </div>
+      <p class="price">One fee: <strong>Rs 30,000 a project</strong>. This one fee covers everything my three projects do.</p>
+    </div>
+  </section>
+
+  <!-- Service shot band -->
+  <section class="band" aria-label="AI Wealth Creators showing a results board and weekly orders">
+    <img src="images/Shot-1.png" width="632" height="632" alt="AI Wealth Creators founder showing a client the results board and weekly orders on screen">
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps, then it runs.</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <div>
+            <h3>We put your catalogue and prices on one page.</h3>
+            <p>Your pieces, your prices and your order form on a single page you can share.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <div>
+            <h3>Orders come in through the form and land in your sheet.</h3>
+            <p>Every order is written down the moment it is placed, so nothing lives only in a chat.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <div>
+            <h3>The weekly digest shows you what sold and who has gone quiet.</h3>
+            <p>You see what sold, and the buyers who have not come back yet.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="one-week">One week, one fee.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div class="about-text">
+        <div class="about-name">
+          <img class="avatar" src="images/Profile.jpg" width="1414" height="2000" alt="Portrait of [YOUR NAME], founder of AI Wealth Creators">
+          <div>
+            <p class="eyebrow" style="margin-bottom:4px">Who I am</p>
+            <h2>[YOUR NAME]</h2>
+          </div>
+        </div>
+        <p>I watched women run good home businesses on chat and lose buyers to a missing page and a price kept in the head. That is why I started AI Wealth Creators: to give a home business one page it can share, one place its orders are written down, and one weekly note that says who has gone quiet.</p>
+        <p>I build it, I keep it simple, and I keep the scope fixed so you always know what you are paying for.</p>
+        <p>The result so far: <span class="slot">[YOUR RESULT]</span>.</p>
+      </div>
+      <figure class="about-photo">
+        <img src="images/working.jpeg" width="2048" height="2048" alt="[YOUR NAME] building a one page catalogue at her desk">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Start here</p>
+      <h2>Book a 20 minute call.</h2>
+      <p>Twenty minutes to look at your catalogue, your orders and the buyers who went quiet.</p>
+      <a class="btn" href="BOOKING_LINK_GOES_HERE">Book a 20 minute call</a>
+      <div class="contact-alt">
+        <a href="https://wa.me/WHATSAPP_NUMBER_GOES_HERE?text=Hello%20AI%20Wealth%20Creators%2C%20I%20would%20like%20to%20ask%20about%20a%20one%20page%20catalogue%20and%20order%20page%20for%20my%20home%20business.">Message me on WhatsApp</a>
+        <a href="mailto:EMAIL_GOES_HERE?subject=One%20page%20catalogue%20enquiry%20-%20AI%20Wealth%20Creators">Email me</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <img src="images/Logo.png" width="1254" height="1254" alt="AI Wealth Creators">
+    <p>AI Wealth Creators</p>
+  </div>
+</footer>
+
+</body>
+</html>
